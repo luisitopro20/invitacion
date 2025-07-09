@@ -1,0 +1,338 @@
+:root {
+    --primary-color: #6a4c93;
+    --secondary-color: #f8bbd0;
+    --accent-color: #ffab91;
+    --text-color: #333;
+    --light-color: #f9f9f9;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: #f5f5f5;
+    line-height: 1.6;
+    padding: 20px;
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+}
+
+.invitation-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.invitation-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    max-width: 800px;
+    width: 100%;
+    margin: 20px;
+    position: relative;
+}
+
+.invitation-header {
+    padding: 30px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+    position: relative;
+}
+
+.invitation-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.decoration-line {
+    height: 3px;
+    width: 100px;
+    background-color: var(--accent-color);
+    margin: 15px auto;
+}
+
+.graduation-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 50% 100%, 0 95%);
+}
+
+.invitation-details {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px;
+    background-color: var(--light-color);
+}
+
+.detail-card {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.detail-card:hover {
+    transform: translateY(-5px);
+}
+
+.detail-card i {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.detail-card h3 {
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.invitation-message {
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.invitation-message p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.childish-decoration {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+.invitation-footer {
+    padding: 20px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+#rsvpBtn {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#rsvpBtn:hover {
+    background-color: #ff8a65;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.social-sharing {
+    margin-top: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.social-icons a {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+    animation: modalOpen 0.4s;
+}
+
+@keyframes modalOpen {
+    from {opacity: 0; transform: translateY(-50px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: var(--text-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #5a3d7a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .invitation-header h1 {
+        font-size: 2rem;
+    }
+    
+    .detail-card {
+        min-width: 100%;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .invitation-header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .invitation-details {
+        padding: 20px 10px;
+    }
+    
+    .modal-content {
+        margin: 20% auto;
+    }
+}
+
+.childish-decoration {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 10px;
+}
+
+
+
+.photo-collage {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.photo-collage img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.photo-collage img:hover {
+    transform: scale(1.03);
+}
+
+/* ✅ Estilos para celulares */
+@media (max-width: 600px) {
+    .photo-collage {
+        grid-template-columns: 1fr;
+        justify-items: center; /* Centra la imagen horizontalmente */
+    }
+
+    .photo-collage img {
+        max-width: 80%; /* Ajuste al ancho de pantalla del celular */
+        height: auto;    /* Para que la altura sea proporcional */
+    }
+}
+

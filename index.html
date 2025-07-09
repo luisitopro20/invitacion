@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graduación de Kinder - Monserrat Loyda Quirino</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- AUDIO -->
+    <audio id="bgAudio" loop>
+        <source src="ed.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="invitation-container">
+        <div class="invitation-card">
+            <div class="invitation-header">
+                <img src="monse2.jpg" alt="Niña sonriente con toga y birrete de graduación sosteniendo un diploma" class="graduation-img">
+                <h1>Monserrat Loyda Quirino</h1>
+                <p class="subtitle">Estás invitado a celebrar mi graduación</p>
+
+                <!-- ÍCONO DE SONIDO -->
+                <div id="audioControl" style="margin-top: 10px; display: flex; align-items: center;">
+                    <i id="playAudioBtn" class="fas fa-volume-up" style="cursor: pointer; font-size: 24px; color: pink; margin-right: 10px;" title="Reproducir música"></i>
+                    <span style="font-size: 14px; color: yellow;"><span>haz click para activar el sonido</span>
+                </div>
+
+                <div class="decoration-line"></div>
+            </div>
+
+            <div class="invitation-details">
+                <div class="detail-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Fecha</h3>
+                    <p>15 de Julio, 2025</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Hora</h3>
+                    <p>7:00 PM</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Lugar</h3>
+                    <p>Abarrotes Janel 2, SM 259 M 112 Lote 31 , Avenida Niños Héroes, villas Otoch paraíso</p>
+                </div>
+            </div>
+
+
+ <div class="invitation-message">
+                <p>Después de aprender, crecer y conocer amistades es momento de dar el siguiente paso a esta etapa, asi que por eso te invito a celebrar este gran logro para mi.<br><br> ¡Te espero para compartir este día tan especial!</p>
+            </div>
+    
+
+            <div class="photo-collage">
+                <img src="monse.jpg" alt="Momentos de aprendizaje">
+            </div>
+            <br><br>
+
+            <!--Formulario incrustado-->
+
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfdU-vbfPqc8EnDCVKXcC8HpWVxvdBfJlsHKyQKycMz7EHrlw/viewform?embedded=true" width="100%" height="600" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        
+            </div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="rsvpModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Confirmar Asistencia</h2>
+            <form id="rsvpForm">
+                <div class="form-group">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email">
+                </div>
+                <div class="form-group">
+                    <label for="guests">Número de acompañantes:</label>
+                    <input type="number" id="guests" min="0" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje (opcional):</label>
+                    <textarea id="message" rows="3"></textarea>
+                </div>
+                <button type="submit">Enviar Confirmación</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // ===== AUDIO MANUAL DESDE ÍCONO =====
+            const audio = document.getElementById('bgAudio');
+            const playBtn = document.getElementById('playAudioBtn');
+
+            audio.volume = 0.5;
+            audio.loop = true;
+
+            playBtn.addEventListener('click', () => {
+                audio.play().then(() => {
+                    playBtn.style.color = '#28a745'; // cambia color al activarse
+                }).catch(error => {
+                    console.error("No se pudo reproducir el audio:", error);
+                });
+            });
+
+            // ===== MODAL DE CONFIRMACIÓN =====
+            const modal = document.getElementById('rsvpModal');
+            const btn = document.getElementById('rsvpBtn');
+            const span = document.getElementsByClassName('close')[0];
+
+            btn.onclick = function () {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            };
+
+            span.onclick = function () {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            };
+
+            window.onclick = function (event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            };
+
+            // ===== FORMULARIO =====
+            const rsvpForm = document.getElementById('rsvpForm');
+            rsvpForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const guests = document.getElementById('guests').value;
+
+                setTimeout(() => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                    alert(`¡Gracias, ${name}! Confirmación exitosa${guests > 0 ? ' para ' + guests + ' personas' : ''}.`);
+                    rsvpForm.reset();
+                }, 500);
+            });
+
+            // ===== ANIMACIONES =====
+            document.querySelectorAll('.detail-card').forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+
+            const headerText = document.querySelector('.invitation-header h1');
+            headerText.style.opacity = '0';
+            headerText.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                headerText.style.opacity = '1';
+                headerText.style.transform = 'translateY(0)';
+            }, 300);
+
+            // ===== COMPARTIR EN REDES =====
+            document.querySelectorAll('.social-icons a').forEach(button => {
+                button.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const service = this.querySelector('i').classList[1].split('-')[1];
+                    const shareUrl = {
+                        facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`,
+                        whatsapp: `https://wa.me/?text=${encodeURIComponent('Invitación a graduación: ' + window.location.href)}`,
+                        envelope: `mailto:?subject=Invitación&body=Te invito a mi graduación: ${encodeURIComponent(window.location.href)}`
+                    }[service];
+
+                    if (shareUrl) window.open(shareUrl, '_blank');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
