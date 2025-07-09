@@ -336,3 +336,23 @@ button[type="submit"]:hover {
     }
 }
 
+
+  .boton-formulario {
+    display: inline-block;
+    background-color: #4CAF50; /* Verde */
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .boton-formulario:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+
+
