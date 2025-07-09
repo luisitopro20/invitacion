@@ -345,7 +345,7 @@ button[type="submit"]:hover {
 
   .boton-formulario {
     display: inline-block;
-    background-color: #4CAF50; /* Verde */
+    background-color: pink; /* Verde */
     color: white;
     padding: 15px 25px;
     text-align: center;
